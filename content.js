@@ -22,12 +22,16 @@ function gotMessage(message, sender, sendResponse) {
 
 function makeCall(start, end) {
   const req = new XMLHttpRequest();
-  const serverhost = 'http://127.0.0.1:63380/suburbs';
-  const urlParams = `source=${start}&destination=${end}`;
+  const serverhost = 'http://127.0.0.1:8000/suburbs';
+  
+  const json = {
+    "source": start,
+    "destination": end
+  };
 
   req.open("POST", serverhost, true);
   req.setRequestHeader("Content-type", "application/json");
-  req.send(urlParams);
+  req.send(JSON.stringify(json));
 
   req.onreadystatechange = function() { // Call a function when the state changes.
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
