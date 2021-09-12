@@ -45,7 +45,7 @@ function makeCall(start, end) {
             e = document.getElementById(`section-directions-trip-title-${i}`);
             
             const newDiv = document.createElement("div");
-            const newContent = document.createTextNode('Safety score: ' + this.response[i]);
+            const newContent = document.createTextNode('<b>Safety score: ' + this.response[i] + '</b>');
             newDiv.appendChild(newContent);
             e.appendChild(newDiv);
         }
