@@ -31,16 +31,23 @@ function makeCall(start, end) {
 
   req.open("POST", serverhost, true);
   req.setRequestHeader("Content-type", "application/json");
+  req.responseType = "json";
   req.send(JSON.stringify(json));
 
   req.onreadystatechange = function() { // Call a function when the state changes.
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
         console.log("Got response 200!");
         console.log(req.response);
-        response = JSON.parse(req.response);
-        for (i = 0; i < response.length(); i++) {
+        response = req.response;
+        
+        for (i = 0; i < response.length; i++) {
+          console.log(this.response[i]);
             e = document.getElementById(`section-directions-trip-title-${i}`);
-            e.innerHTML = e.innerHTML + ' has a safety score of' + this.response[i];
+            
+            const newDiv = document.createElement("div");
+            const newContent = document.createTextNode('Safety score: ' + this.response[i]);
+            newDiv.appendChild(newContent);
+            e.appendChild(newDiv);
         }
     } else if (this.status !== 200) {
       console.log("Status" + this.status);
