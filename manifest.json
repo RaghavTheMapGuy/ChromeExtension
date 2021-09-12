@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "SafeRoads",
+  "name": "Vroom",
   "version" : "1.0",
   "content_scripts": [
     {
@@ -12,8 +12,7 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_icon": "logo.png",
-    "default_popup": "popup.html"
+    "default_icon": "logo.png"
   },
   "permissions": ["activeTab", "scripting"]
 }
