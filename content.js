@@ -37,6 +37,11 @@ function makeCall(start, end) {
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
         console.log("Got response 200!");
         console.log(req.response);
+        response = JSON.parse(req.response);
+        for (i = 0; i < response.length(); i++) {
+            e = document.getElementById(`section-directions-trip-title-${i}`);
+            e.innerHTML = e.innerHTML + ' has a safety score of' + this.response[i];
+        }
     } else if (this.status !== 200) {
       console.log("Status" + this.status);
     }
